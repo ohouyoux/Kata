@@ -1,9 +1,6 @@
 package be.fun.kata04;
 
-import com.google.common.collect.ImmutableList;
-
 import java.io.IOException;
-import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

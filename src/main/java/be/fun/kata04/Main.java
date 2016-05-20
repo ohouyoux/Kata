@@ -17,6 +17,6 @@ public class Main {
         url = Resources.getResource("football.dat");
         file = new File(url.toURI());
         scanner = factory.newInstance(DataType.FOOTBALL, file);
-        //scanner.scan();
+        scanner.scan();
     }
 }

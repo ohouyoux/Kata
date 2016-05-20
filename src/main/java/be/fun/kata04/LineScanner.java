@@ -35,13 +35,13 @@ public abstract class LineScanner<T> implements DataScanner<T> {
     }
 
     protected List<String> clean(final List<String> lines) {
-        Predicate<String> cleaner = getCleaner();
+        return Lists.newArrayList(Iterables.filter(lines, new Predicate<String>() {
 
-        return Lists.newArrayList(Iterables.filter(lines, cleaner));
+            public boolean apply(final String line) {
+                return line.length() > 0 && Character.isDigit(line.trim().charAt(0));
+            }
+        }));
     }
 
     protected abstract T split(List<String> lines);
-
-    // Factory Method
-    protected abstract Predicate<String> getCleaner();
 }

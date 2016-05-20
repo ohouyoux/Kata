@@ -1,14 +1,14 @@
 package be.fun.kata04;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import java.io.File;
 import java.util.List;
 
-public class FootballScanner extends LineScanner<List<Team>> {
+public class FootballScanner extends LineScanner<Team> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 
@@ -16,26 +16,19 @@ public class FootballScanner extends LineScanner<List<Team>> {
         super(file);
     }
 
-    protected List<Team> split(final List<String> lines) {
-        return Lists.transform(lines, new Function<String, Team>() {
+    protected Team split(final List<String> lines) {
+        List<Team> teams = Lists.transform(lines, new Function<String, Team>() {
 
             public Team apply(final String line) {
                 List<String> columns = SPLITTER.splitToList(line);
                 String name = columns.get(1);
                 int scored = Integer.parseInt(columns.get(6));
-                int against = Integer.parseInt(columns.get(7));
+                int against = Integer.parseInt(columns.get(8));
 
                 return new Team(name, scored, against);
             }
         });
-    }
 
-    protected Predicate<String> getCleaner() {
-        return new Predicate<String>() {
-
-            public boolean apply(final String line) {
-                return line.length() > 0 && Character.isDigit(line.trim().charAt(0));
-            }
-        };
+        return Sets.newHashSet(teams).iterator().next();
     }
 }

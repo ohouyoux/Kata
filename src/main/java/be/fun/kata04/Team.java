@@ -2,12 +2,13 @@ package be.fun.kata04;
 
 
 import com.google.common.base.Objects;
+import com.google.common.collect.ComparisonChain;
 
 import java.io.Serializable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class Team implements Serializable {
+public class Team implements Comparable<Team>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,7 +18,7 @@ public class Team implements Serializable {
 
     public Team(final String name, final int score, final int conceded) {
         this.name = checkNotNull(name, "Team name should not be null");
-        this.difference = score - conceded;
+        this.difference = Math.abs(score - conceded);
     }
 
     public String getName() {
@@ -48,11 +49,16 @@ public class Team implements Serializable {
         return false;
     }
 
+    public int compareTo(final Team team) {
+        return ComparisonChain.start().compare(difference, team.difference).result();
+    }
+
     @Override
     public String toString() {
-        return new StringBuilder('[')
+        return new StringBuilder()
+                .append('[')
                 .append(getName())
-                .append(" > ")
+                .append(": ")
                 .append(getDifference())
                 .append(']')
                 .toString();

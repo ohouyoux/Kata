@@ -1,7 +1,6 @@
 package be.fun.kata04;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 
@@ -45,14 +44,5 @@ public class WeatherScanner extends LineScanner<Weather> {
         }
 
         return weather;
-    }
-
-    protected Predicate<String> getCleaner() {
-        return new Predicate<String>() {
-
-            public boolean apply(final String line) {
-                return line.length() > 0 && Character.isDigit(line.trim().charAt(0));
-            }
-        };
     }
 }

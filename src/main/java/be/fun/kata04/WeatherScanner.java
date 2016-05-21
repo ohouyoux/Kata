@@ -10,6 +10,11 @@ import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ *
+ *
+ * @author Olivier Houyoux
+ */
 public class WeatherScanner extends FileScanner<Weather> {
 
     public static final class SpreadComparator implements Comparator<Weather> {

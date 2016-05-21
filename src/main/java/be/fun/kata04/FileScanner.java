@@ -12,6 +12,12 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ *
+ * @author Olivier Houyoux
+ * @param <T>
+ */
 public abstract class FileScanner<T> implements DataScanner<T, IOException> {
 
     private File file;

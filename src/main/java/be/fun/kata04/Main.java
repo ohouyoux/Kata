@@ -8,6 +8,7 @@ import java.net.URL;
 /**
  * Main entry point.
  *
+ * @author Olivier Houyoux
  * @see http://codekata.com/kata/kata04-data-munging/
  */
 public class Main {

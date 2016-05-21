@@ -7,6 +7,11 @@ import java.io.Serializable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ *
+ * @author Olivier Houyoux
+ */
 public class Weather implements Serializable {
 
     private static final long serialVersionUID = 1L;

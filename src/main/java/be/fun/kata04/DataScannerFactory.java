@@ -4,6 +4,8 @@ import java.io.File;
 
 /**
  * Helps to instantiate new {@code DataScanner} instances.
+ *
+ * @author Olivier Houyoux
  */
 public class DataScannerFactory {
 

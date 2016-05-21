@@ -3,6 +3,7 @@ package be.fun.kata04;
 /**
  * Defines how to apply scanning.
  *
+ * @author Olivier Houyoux
  * @param <T> the type of data that this {@code DataScanner} will produce
  * @param <E> the type of {@code Exception} that this {@code DataScanner} may throw while parsing data
  */

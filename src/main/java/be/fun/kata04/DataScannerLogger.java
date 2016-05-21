@@ -7,6 +7,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Decorates a {@code DataScanner} to log the result of the scan.
  *
+ * @author Olivier Houyoux
  * @param <T> the type of data that this {@code DataScanner} will produce
  * @param <E> the type of {@code Exception} that this {@code DataScanner} may throw while parsing data
  */

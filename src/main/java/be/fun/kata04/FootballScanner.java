@@ -8,6 +8,11 @@ import com.google.common.collect.Ordering;
 import java.io.File;
 import java.util.List;
 
+/**
+ *
+ *
+ * @author Olivier Houyoux
+ */
 public class FootballScanner extends FileScanner<Team> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();

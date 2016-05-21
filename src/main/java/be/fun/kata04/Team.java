@@ -8,6 +8,11 @@ import java.io.Serializable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+/**
+ *
+ *
+ * @author Olivier Houyoux
+ */
 public class Team implements Comparable<Team>, Serializable {
 
     private static final long serialVersionUID = 1L;

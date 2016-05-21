@@ -7,6 +7,7 @@ package be.fun.kata04;
  * @param <T> the type of data that this {@code DataScanner} will produce
  * @param <E> the type of {@code Exception} that this {@code DataScanner} may throw while parsing data
  */
+@FunctionalInterface
 public interface DataScanner<T, E extends Exception> {
 
     // Strategy - http://www.oodesign.com/strategy-pattern.html

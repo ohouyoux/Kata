@@ -3,7 +3,7 @@ package be.fun.kata04;
 import com.google.common.base.Function;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Ordering;
 
 import java.io.File;
 import java.util.List;
@@ -29,6 +29,6 @@ public class FootballScanner extends LineScanner<Team> {
             }
         });
 
-        return Sets.newHashSet(teams).iterator().next();
+        return Ordering.natural().leastOf(teams, 1).get(0);
     }
 }

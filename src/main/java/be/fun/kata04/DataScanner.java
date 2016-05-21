@@ -1,13 +1,12 @@
 package be.fun.kata04;
 
-import java.io.IOException;
-
 /**
  * Defines how to apply scanning.
  *
  * @param <T> the type of data that this {@code DataScanner} will produce
+ * @param <E> the type of {@code Exception} that this {@code DataScanner} may throw while parsing data
  */
-public interface DataScanner<T> {
+public interface DataScanner<T, E extends Exception> {
 
     // Strategy
 
@@ -15,7 +14,7 @@ public interface DataScanner<T> {
      * Scans raw data to produce meaningful information.
      *
      * @return the result of the scan
-     * @throws IOException if the raw data could not be read
+     * @throws E if the raw data could not be read
      */
-    T scan() throws IOException;
+    T scan() throws E;
 }

@@ -1,19 +1,17 @@
 package be.fun.kata04;
 
-import java.io.IOException;
-
 import static com.google.common.base.Preconditions.checkNotNull;
 
-// Decorator
-public class DataScannerLogger<T> implements DataScanner<T> {
+// Decorator - http://www.oodesign.com/decorator-pattern.html
+public class DataScannerLogger<T, E extends Exception> implements DataScanner<T, E> {
 
-    private final DataScanner<T> scanner;
+    private final DataScanner<T, E> scanner;
 
-    public DataScannerLogger(final DataScanner<T> scanner) {
+    public DataScannerLogger(final DataScanner<T, E> scanner) {
         this.scanner = checkNotNull(scanner);
     }
 
-    public T scan() throws IOException {
+    public T scan() throws E {
         T data = scanner.scan();
 
         System.out.println(data);

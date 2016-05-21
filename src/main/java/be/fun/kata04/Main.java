@@ -5,8 +5,17 @@ import com.google.common.io.Resources;
 import java.io.File;
 import java.net.URL;
 
+/**
+ * Main entry point.
+ */
 public class Main {
 
+    /**
+     * Scans weather and football team data to display meaningful information.
+     *
+     * @param args the application arguments
+     * @throws Exception if for some reason any application data could not be read
+     */
     public static void main(final String[] args) throws Exception {
         URL url = Resources.getResource("weather.dat");
         File file = new File(url.toURI());

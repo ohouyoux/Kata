@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 
-public class WeatherScanner extends LineScanner<Weather> {
+public class WeatherScanner extends FileScanner<Weather> {
 
     public static final class SpreadComparator implements Comparator<Weather> {
 

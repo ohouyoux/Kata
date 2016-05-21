@@ -8,7 +8,7 @@ import com.google.common.collect.Ordering;
 import java.io.File;
 import java.util.List;
 
-public class FootballScanner extends LineScanner<Team> {
+public class FootballScanner extends FileScanner<Team> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 

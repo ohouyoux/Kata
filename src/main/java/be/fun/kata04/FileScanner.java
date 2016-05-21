@@ -17,11 +17,11 @@ public abstract class FileScanner<T> implements DataScanner<T, IOException> {
     private File file;
 
     /**
-     * Configures this {@code DataScanner} with the data to be loaded.
+     * Instantiates a new {@code FileScanner}.
      *
      * @param file the {@code File} which contains the data to be loaded
      */
-    public void setFile(final File file) {
+    public FileScanner(final File file) {
         this.file = checkNotNull(file, "DataType file should not be null");
     }
 

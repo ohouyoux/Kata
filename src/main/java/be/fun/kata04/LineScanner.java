@@ -16,9 +16,14 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public abstract class LineScanner<T> implements DataScanner<T> {
 
-    private final File file;
+    private File file;
 
-    public LineScanner(final File file) {
+    /**
+     * Configures this {@code DataScanner} with the data to be loaded.
+     *
+     * @param file the {@code File} which contains the data to be loaded
+     */
+    public void setFile(final File file) {
         this.file = checkNotNull(file, "DataType file should not be null");
     }
 

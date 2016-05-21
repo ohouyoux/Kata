@@ -2,9 +2,20 @@ package be.fun.kata04;
 
 import java.io.File;
 
-// Factory
+/**
+ * Helps to instantiate new {@code DataScanner} instances.
+ */
 public class DataScannerFactory {
 
+    // Factory
+
+    /**
+     * Instantiates a new {@code DataScanner}.
+     *
+     * @param type the type of data that the new {@code DataScanner} will have to parse
+     * @param data the data to be parsed by the new {@code DataScanner}
+     * @return a new {@code DataScanner}
+     */
     public DataScanner newInstance(final DataType type, final File data) {
         DataScanner scanner;
 

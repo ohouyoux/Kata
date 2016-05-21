@@ -8,7 +8,7 @@ package be.fun.kata04;
  */
 public interface DataScanner<T, E extends Exception> {
 
-    // Strategy
+    // Strategy - http://www.oodesign.com/strategy-pattern.html
 
     /**
      * Scans raw data to produce meaningful information.

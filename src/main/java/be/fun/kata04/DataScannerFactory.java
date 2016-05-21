@@ -7,7 +7,7 @@ import java.io.File;
  */
 public class DataScannerFactory {
 
-    // Factory
+    // Factory - http://www.oodesign.com/factory-pattern.html
 
     /**
      * Instantiates a new {@code DataScanner}.

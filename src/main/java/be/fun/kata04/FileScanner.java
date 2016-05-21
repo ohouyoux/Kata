@@ -26,7 +26,7 @@ public abstract class FileScanner<T> implements DataScanner<T, IOException> {
     }
 
     public T scan() throws IOException {
-        // Template Method
+        // Template Method - http://www.oodesign.com/template-method-pattern.html
         List<String> lines = load(file);
         lines = clean(lines);
 

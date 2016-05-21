@@ -13,10 +13,10 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
+ * A {@code DataScanner} implementation which data are loaded from a {@code File}.
  *
  * @author Olivier Houyoux
- * @param <T>
+ * @param <T> the type of data that this {@code FileScanner} is able to read
  */
 public abstract class FileScanner<T> implements DataScanner<T, IOException> {
 
@@ -32,6 +32,13 @@ public abstract class FileScanner<T> implements DataScanner<T, IOException> {
     }
 
 
+    /**
+     * Scans the file to retrieve some meaningful information.
+     *
+     * @return the meaningful information deduced from the {@code file} content
+     * @throws IOException if {@code file} could not be read
+     * @see #file
+     */
     public T scan() throws IOException {
         // Template Method - http://www.oodesign.com/template-method-pattern.html
         List<String> lines = load(file);

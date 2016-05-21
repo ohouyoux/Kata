@@ -2,8 +2,6 @@ package be.fun.kata04;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Predicate;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
@@ -14,7 +12,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public abstract class LineScanner<T> implements DataScanner<T> {
+public abstract class FileScanner<T> implements DataScanner<T, IOException> {
 
     private File file;
 

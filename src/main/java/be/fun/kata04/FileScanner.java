@@ -40,11 +40,12 @@ public abstract class FileScanner<T> implements DataScanner<T, IOException> {
      * @see #file
      */
     public T scan() throws IOException {
+        // I may have missed something here because the kata explains that we need to find a smallest value for both
+        // data types. There is absolutely nothing in the design that brings this to light.
+
         // Template Method - http://www.oodesign.com/template-method-pattern.html
         List<String> lines = load(file);
         lines = clean(lines);
-
-        // TODO add a step, the split (or scan) should return a list of type that should then be sorted
 
         return split(lines);
     }

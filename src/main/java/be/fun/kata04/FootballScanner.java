@@ -18,6 +18,24 @@ public class FootballScanner extends FileScanner<Team> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 
+    private static final class LineSplitter implements Function<String, Team> {
+
+        /**
+         * Splits a text line and uses the data to create a {@code Team} object.
+         *
+         * @param line the digit based line to be split
+         * @return a {@code Weather} object
+         */
+        public Team apply(final String line) {
+            List<String> columns = SPLITTER.splitToList(line);
+            String name = columns.get(1);
+            int scored = Integer.parseInt(columns.get(6));
+            int against = Integer.parseInt(columns.get(8));
+
+            return new Team(name, scored, against);
+        }
+    }
+
     /**
      * Instantiates a new {@code FootballScanner}.
      *
@@ -35,17 +53,7 @@ public class FootballScanner extends FileScanner<Team> {
      * @return the {@code Team} with the smallest goal difference
      */
     protected Team split(final List<String> lines) {
-        List<Team> teams = Lists.transform(lines, new Function<String, Team>() {
-
-            public Team apply(final String line) {
-                List<String> columns = SPLITTER.splitToList(line);
-                String name = columns.get(1);
-                int scored = Integer.parseInt(columns.get(6));
-                int against = Integer.parseInt(columns.get(8));
-
-                return new Team(name, scored, against);
-            }
-        });
+        List<Team> teams = Lists.transform(lines, new LineSplitter());
 
         return Ordering.natural().leastOf(teams, 1).get(0);
     }

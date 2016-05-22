@@ -30,6 +30,38 @@ public class WeatherScanner extends FileScanner<Weather> {
         }
     }
 
+    private static final class LineCleaner implements Function<String, String> {
+
+        /**
+         * Removes non-digit characters from a line.
+         *
+         * @param line the raw line to be cleaned
+         * @return a text line made of only number characters
+         */
+        public String apply(final String line) {
+            return line.replaceAll("[^0-9\\.]+", " ");
+        }
+    }
+
+    private static final class LineSplitter implements Function<String, Weather> {
+
+        /**
+         * Splits a numbered text line and uses the numbers to create a {@code Weather} object.
+         *
+         * @param line the digit based line to be split
+         * @return a {@code Weather} object
+         */
+        public Weather apply(final String line) {
+            List<String> columns = SPLITTER.splitToList(line);
+            int day = Integer.parseInt(columns.get(0));
+            int max = Integer.parseInt(columns.get(1));
+            int min = Integer.parseInt(columns.get(2));
+            int spread = max - min;
+
+            return new Weather("Morristown", "June 2002", day, spread);
+        }
+    }
+
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 
     /**
@@ -50,12 +82,7 @@ public class WeatherScanner extends FileScanner<Weather> {
     protected List<String> clean(final List<String> lines) {
         List<String> cleaned = super.clean(lines);
 
-        return Lists.transform(cleaned, new Function<String, String>() {
-
-            public String apply(final String line) {
-                return line.replaceAll("[^0-9\\.]+", " ");
-            }
-        });
+        return Lists.transform(cleaned, new LineCleaner());
     }
 
     /**
@@ -66,18 +93,7 @@ public class WeatherScanner extends FileScanner<Weather> {
      * @return the {@code Weather} with the smallest temperature spread
      */
     protected Weather split(final List<String> lines) {
-        List<Weather> weathers = Lists.transform(lines, new Function<String, Weather>() {
-
-            public Weather apply(final String line) {
-                List<String> columns = SPLITTER.splitToList(line);
-                int day = Integer.parseInt(columns.get(0));
-                int max = Integer.parseInt(columns.get(1));
-                int min = Integer.parseInt(columns.get(2));
-                int spread = max - min;
-
-                return new Weather("Morristown", "June 2002", day, spread);
-            }
-        });
+        List<Weather> weathers = Lists.transform(lines, new LineSplitter());
 
         return Ordering.from(new SpreadComparator()).leastOf(weathers, 1).get(0);
     }

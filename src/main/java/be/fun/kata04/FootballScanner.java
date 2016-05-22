@@ -28,7 +28,8 @@ public class FootballScanner extends FileScanner<Team> {
     }
 
     /**
-     * Splits each information line into useful {@code Team} and selects the one with the smallest goal difference.
+     * Splits each information line into useful data chunk used to create a {@code Team}. Selects the one with the
+     * smallest goal difference.
      *
      * @param lines the raw text line that are scanned and split into {@code Team}s
      * @return the {@code Team} with the smallest goal difference

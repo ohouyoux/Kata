@@ -7,6 +7,7 @@ import com.google.common.collect.Ordering;
 import com.google.common.primitives.Ints;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class WeatherScanner extends FileScanner<Weather> {
     /**
      * A {@code Comparator} implementation which uses the {@code Weather}'s spread for ordering.
      */
-    public static final class SpreadComparator implements Comparator<Weather> {
+    public static final class SpreadComparator implements Comparator<Weather>, Serializable {
+
+        private static final long serialVersionUID = 1L;
 
         public int compare(final Weather w1, final Weather w2) {
             return Ints.compare(w1.getSpread(), w2.getSpread());

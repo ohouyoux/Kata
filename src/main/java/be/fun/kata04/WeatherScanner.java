@@ -11,12 +11,15 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- *
+ * A {@code FileScanner} for weather data which retrieves the {@code Weather} with the smallest temperature spread.
  *
  * @author Olivier Houyoux
  */
 public class WeatherScanner extends FileScanner<Weather> {
 
+    /**
+     * A {@code Comparator} implementation which uses the {@code Weather}'s spread for ordering.
+     */
     public static final class SpreadComparator implements Comparator<Weather> {
 
         public int compare(final Weather w1, final Weather w2) {
@@ -26,10 +29,21 @@ public class WeatherScanner extends FileScanner<Weather> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 
+    /**
+     * Instantiates a new {@code FootballScanner}.
+     *
+     * @param file the {@code File} which contains the football data
+     */
     public WeatherScanner(final File file) {
         super(file);
     }
 
+    /**
+     * Cleans every single line of the loaded file from characters which are not parts of a number.
+     *
+     * @param lines all text lines from the data {@code file}
+     * @return the text lines without non-digit characters
+     */
     protected List<String> clean(final List<String> lines) {
         List<String> cleaned = super.clean(lines);
 
@@ -41,6 +55,13 @@ public class WeatherScanner extends FileScanner<Weather> {
         });
     }
 
+    /**
+     * Splits each information line into useful data chunk used to create a {@code Weather}. Selects the one with the
+     * smallest temperature spread.
+     *
+     * @param lines the raw text line that are scanned and split into {@code Weather}s
+     * @return the {@code Weather} with the smallest temperature spread
+     */
     protected Weather split(final List<String> lines) {
         List<Weather> weathers = Lists.transform(lines, new Function<String, Weather>() {
 

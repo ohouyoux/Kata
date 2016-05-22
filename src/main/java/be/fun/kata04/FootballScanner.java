@@ -9,7 +9,8 @@ import java.io.File;
 import java.util.List;
 
 /**
- *
+ * A {@code FileScanner} for football data which retrieves the {@code Team} with the smallest difference in ‘for’ and
+ * ‘against’ goals.
  *
  * @author Olivier Houyoux
  */
@@ -17,10 +18,21 @@ public class FootballScanner extends FileScanner<Team> {
 
     private static final Splitter SPLITTER = Splitter.on(' ').trimResults().omitEmptyStrings();
 
+    /**
+     * Instantiates a new {@code FootballScanner}.
+     *
+     * @param file the {@code File} which contains the football data
+     */
     public FootballScanner(final File file) {
         super(file);
     }
 
+    /**
+     * Splits each information line into useful {@code Team} and selects the one with the smallest goal difference.
+     *
+     * @param lines the raw text line that are scanned and split into {@code Team}s
+     * @return the {@code Team} with the smallest goal difference
+     */
     protected Team split(final List<String> lines) {
         List<Team> teams = Lists.transform(lines, new Function<String, Team>() {
 

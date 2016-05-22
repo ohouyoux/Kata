@@ -1,8 +1,8 @@
 package be.fun.kata04;
 
-import java.util.logging.Logger;
-
 import static com.google.common.base.Preconditions.checkNotNull;
+
+import java.util.logging.Logger;
 
 /**
  * Decorates a {@code DataScanner} to log the result of the scan.

@@ -1,11 +1,10 @@
 package be.fun.kata04;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.common.base.Objects;
 
 import java.io.Serializable;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * A daily weather sample.

@@ -1,8 +1,9 @@
 package be.fun.kata04;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.logging.Logger;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Decorates a {@code DataScanner} to log the result of the scan.
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class DataScannerLogger<T, E extends Exception> implements DataScanner<T, E> {
 
-    private static final Logger LOGGER = Logger.getLogger(DataScannerLogger.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataScannerLogger.class);
 
     // Decorator - http://www.oodesign.com/decorator-pattern.html
 

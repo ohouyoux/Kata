@@ -77,12 +77,12 @@ public class Weather implements Serializable {
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hashCode(city, month, day);
     }
 
     @Override
-    public boolean equals(final Object object) {
+    public final boolean equals(final Object object) {
         if (object == this) {
             return true;
         }

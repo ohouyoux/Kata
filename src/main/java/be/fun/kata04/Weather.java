@@ -123,13 +123,13 @@ public class Weather implements Serializable {
     @Override
     public String toString() {
         return new StringBuilder()
-                .append("Weather [")
+                .append("Weather [city: ")
                 .append(getCity())
-                .append(" - ")
+                .append(", month: ")
                 .append(getMonth())
-                .append(": ")
+                .append(", day: ")
                 .append(getDay())
-                .append(" > ")
+                .append(",  spread: ")
                 .append(getSpread())
                 .append(']')
                 .toString();

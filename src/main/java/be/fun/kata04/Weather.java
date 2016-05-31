@@ -99,7 +99,7 @@ public class Weather implements Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(city, month, day);
+        return Objects.hashCode(city, month, day, spread);
     }
 
     @Override
@@ -113,7 +113,8 @@ public class Weather implements Serializable {
 
             return Objects.equal(city, weather.city)
                     && Objects.equal(month, weather.month)
-                    && Objects.equal(day, weather.day);
+                    && Objects.equal(day, weather.day)
+                    && Objects.equal(spread, weather.spread);
         }
 
         return false;

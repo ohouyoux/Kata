@@ -123,7 +123,7 @@ public class Weather implements Serializable {
     @Override
     public String toString() {
         return new StringBuilder()
-                .append('[')
+                .append("Weather [")
                 .append(getCity())
                 .append(" - ")
                 .append(getMonth())

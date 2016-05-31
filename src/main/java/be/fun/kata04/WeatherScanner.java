@@ -52,13 +52,19 @@ public class WeatherScanner extends FileScanner<Weather> {
          * @return a {@code Weather} object
          */
         public Weather apply(final String line) {
+            Weather weather = new Weather();
+            weather.setCity("Morristown");
+            weather.setMonth("June 2002");
+
             List<String> columns = SPLITTER.splitToList(line);
             int day = Integer.parseInt(columns.get(0));
+            weather.setDay(day);
             int max = Integer.parseInt(columns.get(1));
             int min = Integer.parseInt(columns.get(2));
             int spread = max - min;
+            weather.setSpread(spread);
 
-            return new Weather("Morristown", "June 2002", day, spread);
+            return weather;
         }
     }
 

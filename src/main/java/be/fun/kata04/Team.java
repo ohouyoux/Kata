@@ -52,7 +52,7 @@ public class Team implements Comparable<Team>, Serializable {
 
     @Override
     public final int hashCode() {
-        return Objects.hashCode(name);
+        return Objects.hashCode(name, difference);
     }
 
     @Override
@@ -64,7 +64,7 @@ public class Team implements Comparable<Team>, Serializable {
         if (object instanceof Team) {
             Team team = (Team) object;
 
-            return Objects.equal(name, team.name);
+            return Objects.equal(name, team.name) && Objects.equal(difference, team.difference);
         }
 
         return false;
@@ -78,9 +78,9 @@ public class Team implements Comparable<Team>, Serializable {
     @Override
     public String toString() {
         return new StringBuilder()
-                .append('[')
+                .append("Team [name: ")
                 .append(getName())
-                .append(": ")
+                .append(", difference: ")
                 .append(getDifference())
                 .append(']')
                 .toString();

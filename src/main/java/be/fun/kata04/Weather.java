@@ -15,27 +15,21 @@ public class Weather implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String city;
+    private String city;
 
-    private final String month;
+    private String month;
 
-    private final int day;
+    private int day;
 
     private int spread;
 
     /**
-     * Instantiates a new {@code Weather}.
+     * Modifies the name of the city where this {@code Weather} sample was recorded.
      *
-     * @param city the name of the city where the weather sample was captured
-     * @param month the month of the sample
-     * @param day the day of the month of the sample
-     * @param spread the temperature spread (difference between the maximum and minimum temp during {@code day})
+     * @param city the new city name
      */
-    public Weather(final String city, final String month, final int day, final int spread) {
-        this.city = checkNotNull(city, "City should not be null");
-        this.month = checkNotNull(month, "Month should not be null");
-        this.day = day;
-        this.spread = spread;
+    public void setCity(final String city) {
+        this.city = city;
     }
 
     /**
@@ -48,6 +42,15 @@ public class Weather implements Serializable {
     }
 
     /**
+     * Modifies the month when this sample was recorded.
+     *
+     * @param month the new month
+     */
+    public void setMonth(final String month) {
+        this.month = month;
+    }
+
+    /**
      * Returns the month when this sample was recorded.
      *
      * @return the month of this {@code Weather} sample
@@ -57,12 +60,30 @@ public class Weather implements Serializable {
     }
 
     /**
+     * Modifies the day of the month when this sample was recorded.
+     *
+     * @param day the new day of the month
+     */
+    public void setDay(final int day) {
+        this.day = day;
+    }
+
+    /**
      * Returns the day of the month when this sample was recorded.
      *
      * @return the day of the month of this {@code Weather} sample
      */
     public int getDay() {
         return day;
+    }
+
+    /**
+     * Modifies the difference between the maximum and minimum temperature for the sample.
+     *
+     * @param spread the new temperature spread
+     */
+    public void setSpread(final int spread) {
+        this.spread = spread;
     }
 
     /**
